@@ -1,17 +1,9 @@
-# WeatherApp
+# Application météo
 
 ##Description
-A simple weather app using AngularJS and [OpenWeatherMap](http://openweathermap.org/) API.
+Application avec formulaire de contact pour trouver la météo de son lieu de résidence et avoir un mail en cas de pluie ou pendant la période de Décembre à Fevrier connaitre les périodes ou il va geler
 
-![WeatherApp](images/app_screenshot/app_screenshot_01.png)
-
-The app takes in zipcodes or location names and calls the OpenWeatherMap API to return a JSON containing
-weather informations for that given location.
-
-##Demo
-You can check out a demo of the app [here!](http://jrasay89.github.io/WeatherApp)
-
-##Technology used
+##Technologies utilisée
 * HTML
 * CSS
 * Boostrap
@@ -19,3 +11,4 @@ You can check out a demo of the app [here!](http://jrasay89.github.io/WeatherApp
 * JQuery
 * OpenWeatherMap API
 * Google Geolocation API
+* PHP 5
