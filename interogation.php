@@ -9,6 +9,7 @@ try{
   }
 $mois = date("m");
 $datetime1=date("Y-m-d");
+$webmaster="m.martinez@agram.fr";
 
 $statement = $bdd->prepare("select * from formulaire where gps > :gps");
 $statement->execute(array(':gps' => 0));
@@ -50,6 +51,7 @@ for ($i = 0; $i < count($list); $i++) {
       $headers .= 'Content-type: text/html; charset=UTF-8'."\r\n";
       $headers .= 'Pluie'."\r\n";
       $destinataire = 'm.martinez@agram.fr,'.$email.''; // Adresse email du webmaster (à personnaliser)      
+      $replyto = .$webmaster.; // Adresse de retour
       $sujet = 'Alerte pluie'; // Titre de l'email
       $contenu = 
       '<html>
@@ -57,13 +59,13 @@ for ($i = 0; $i < count($list); $i++) {
               <title>Risque de pluie</title>
         </head>
         <body>
-          Attention il risque de pleuvoir dans 3 jours
+          Attention nous vous informons qu \'il risque de pleuvoir dans 3 jours prevoyez vos travaux en cons&eacutequence
         </body>
       </html>'; 
       // Contenu du message de l'email (en HTML)
 
       // Envoyer l'email
-      mail($destinataire, $sujet, $contenu, $headers); // Fonction principale qui envoi l'email
+      mail($destinataire, $sujet, $contenu, $headers,$replyto); // Fonction principale qui envoi l'email
       echo '<h2>Votre message a &eacute;t&eacute; envoy&eacute;!</h2>'; // Afficher un message pour indiquer que le message a été envoyé
       // (2) Fin du code pour traiter l'envoi de l'email
       
@@ -84,6 +86,7 @@ for ($i = 0; $i < count($list); $i++) {
       $headers .= 'Content-type: text/html; charset=UTF-8'."\r\n";
       $headers .= 'Pluie'."\r\n";
       $destinataire = 'm.martinez@agram.fr,'.$email.''; // Adresse email du webmaster (à personnaliser)      
+      $replyto = 'm.martinez@agram.fr'; // Adresse de retour
       $sujet = 'Alerte gel'; // Titre de l'email
       $contenu = 
       '<html>
@@ -91,12 +94,12 @@ for ($i = 0; $i < count($list); $i++) {
               <title>Risque de gel</title>
         </head>
         <body>
-          Attention il risque de geler dans 3 jour
+          Attention il risque de geler dans 3 jour pensez à prendre vos pr&eacutecautions
         </body>
       </html>'; 
       // Contenu du message de l'email (en HTML)
       // Envoyer l'email
-      mail($destinataire, $sujet, $contenu, $headers); // Fonction principale qui envoi l'email
+      mail($destinataire, $sujet, $contenu, $headers, $replyto); // Fonction principale qui envoi l'email
       echo '<h2>Votre message a &eacute;t&eacute; envoy&eacute;!</h2>'; // Afficher un message pour indiquer que le message a été envoyé
       // (2) Fin du code pour traiter l'envoi de l'email
       // Enregistrement dans la base de donnée de la nouvelle date

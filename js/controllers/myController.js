@@ -3,19 +3,19 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 	$scope.hasWeather = false;
 	$scope.currentBG = "default_bg";
 	
-	//Get the weather information
+	//Obtenir les informations météo
 	$scope.getWeather = function() {
-		//Get the geolocation information
+		//Obtenir les informations de géolocalisation
 		Address.get($scope.zipcode, function(data) {
 			if (data.status != "ZERO_RESULTS") {
 				$scope.formattedAddress = data.results[0].formatted_address;
 				$scope.areaLocation = data.results[0].geometry.location;
-				//Get the weather data
+				//Obtenir les informations météo du jour
 				Weather.get($scope.areaLocation.lat, $scope.areaLocation.lng, function(data) {
 					$scope.weather = data;
 					$scope.hasWeather = true; //Set to true to show weather in view
 					$scope.changeBackground($scope.weather.weather[0].icon); //Change the background of app base on weather
-					//Get the forecast data
+					//Obtenir la météo des jour à venir
 					Forecast.get($scope.areaLocation.lat, $scope.areaLocation.lng, function(data) {
 						$scope.forecast = data;
 					});			
@@ -32,11 +32,11 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 				
 			}
 		});
-		//Reset text for input box
+		//Effacer le code postal
 		$scope.zipcode = "";
 	};
 	
-	//Change the background of the app base on the current weather
+	//Changer le background de l'application suivant le temps qu'il fait
 	$scope.changeBackground = function(code) {
 		$('#background').removeClass($scope.currentBG);
 		switch(code) {
@@ -89,7 +89,7 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 		$('#background').addClass($scope.currentBG);
 	};
 	
-	//Get the icon for the current weather
+	//Obtenir les icones pour le temps du jour
 	$scope.getIcon = function(code) {
 		switch(code) {
 			case "01d":
@@ -153,7 +153,7 @@ app.controller("myCtrl", function($scope, $http, Address, Weather, Forecast) {
 		return $scope.hasWeather;
 	};
 	
-	//Show or hide popover message
+	//Montrer ou cacher le message popover
 	$scope.popoverHelper = {
 		showPopover: function() {
 			$("#zipcode_input").popover("show");
