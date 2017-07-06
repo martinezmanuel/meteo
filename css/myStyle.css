@@ -1,6 +1,10 @@
 body {
 	background-color: #cccccc;
 }
+#erreur
+{
+	background:  url(../images/weather_bg/default_weather.png) no-repeat center center; 
+}
 #main_container {
 	padding-top: 1%;
 }

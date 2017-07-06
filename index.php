@@ -1,14 +1,13 @@
 <?php include_once("header.php"); ?>
-	<body ng-app="myApp">
+	<body ng-app="myApp" >
 		<div ng-controller="myCtrl" class="container" id="main_container">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col_centered default_bg" id="background">
 				<!-- Title -->
 				<div class="container-fluid" id="title">
-					<h1>Météo</h1>
-				
-				<?php
-				include "geoloc.php";
-				 ?>
+					<h1>Météo</h1>			
+				<?php include 'geoloc.php';?>
+
+
 				 </div>
 				<!-- Adresse -->
 				<div class="container-fluid" id="zipcode">

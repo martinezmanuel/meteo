@@ -1,7 +1,7 @@
 # Application météo
 
 ##Description
-Application avec formulaire de contact pour trouver la météo de son lieu de résidence et avoir un mail en cas de pluie ou pendant la période de Décembre à Fevrier connaitre les périodes ou il va geler
+Application avec formulaire de contact pour trouver la météo de son lieu de résidence et avoir un mail en cas de pluie ou pendant la période de Décembre à Février connaitre les périodes ou il va geler
 
 ##Technologies utilisée
 * HTML
