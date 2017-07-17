@@ -11,7 +11,7 @@ angular.module("myApp").factory("Forecast", function($http) {
 				lon: longitude,
 				mode: "json",
 				units: "metric",
-				cnt: "14",
+				cnt: "7",
 				appid: APPID,
 				mode: "json"
 			}	
