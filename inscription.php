@@ -1,5 +1,7 @@
 <?php include_once("header.php"); ?>
-	<body ng-app="myApp">
+
+		
+	<body ng-app="myApp" >
 		<div ng-controller="myCtrl" class="container" id="main_container">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col_centered default_bg" id="background">
 				<!-- Title -->
@@ -24,22 +26,14 @@
 									<!-- Complement d'adresse -->
 									<label for="street2_id" class="control-label">Complement d'adresse</label>
 										<input type="text" class="form-control" id="street2_id" name="street2" placeholder="Complement d'adresse">
-								</div>	
-								<div class="form-group"> 
+								</div>
+								<div class="form-group">
 									<!-- Ville-->
 									<label for="city_id" class="control-label">Ville</label>
 										<input type="text" class="form-control" id="city_id" name="city" placeholder="Ville">
-								</div>
-								<div class="form-group"> 
-									<!-- Code postal-->
-									<label for="code_id" class="control-label">Code Postal</label>
-										<input type="text" class="form-control" id="code_id" name="code" placeholder="Code Postal">
-								</div>
-								<div class="form-group"> 
-									<!-- GPS-->
-									<label for="gps_id" class="control-label">Coordonnées GPS</label>
-										<input type="text" class="form-control" id="gps_id" name="gps" placeholder="Coordonnées GPS">
-								</div>	
+								</div>			
+								<?php include 'geo-loc.php';?>	
+								
 			    				<div class="form-group">
 			    					<!-- Email-->
 			    					<label for="email_id" class="control-label">Email</label>

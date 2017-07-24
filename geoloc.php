@@ -7,11 +7,9 @@
         async defer></script>
 <script type="text/javascript">
   var geocoder;
-  
   function initialize() {
     geocoder = new google.maps.Geocoder();
   }
-
   function codeAddress() {
     var address = document.getElementById("address").value;
     geocoder.geocode( { 'address': address}, function(results, status) {
@@ -23,7 +21,6 @@
       }
     });
   }
-
 
 </script>
 </head>
