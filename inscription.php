@@ -32,7 +32,16 @@
 									<label for="city_id" class="control-label">Ville</label>
 										<input type="text" class="form-control" id="city_id" name="city" placeholder="Ville">
 								</div>			
-								<?php include 'geo-loc.php';?>	
+								<div class="form-group"> 
+									<!-- Code postal-->
+									<label for="code_id" class="control-label">Code Postal</label>
+										<input type="text" class="form-control" id="code_id" name="code" placeholder="Code Postal">
+								</div>
+								<div class="form-group"> 
+									<!-- GPS-->
+									<label for="gps_id" class="control-label">Coordonnées GPS</label>
+										<input type="text" class="form-control" id="gps_id" name="gps" placeholder="Coordonnées GPS">
+								</div>		
 								
 			    				<div class="form-group">
 			    					<!-- Email-->
