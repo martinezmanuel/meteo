@@ -11,23 +11,29 @@ try{
 $nom=isset($_POST['full_name'])?$_POST['full_name']:'';
 $adresse=isset($_POST['street1'])?$_POST['street1']:'';
 $comp_adresse=isset($_POST['street2'])?$_POST['street2']:'';
-$ville=isset($_POST['city'])?$_POST['city']:'';
 $code=isset($_POST['postal'])?$_POST['postal']:'';
-$gps=isset($_POST['gps'])?$_POST['gps']:'';
+$ville=isset($_POST['city'])?$_POST['city']:'';
 $email=isset($_POST['email'])?$_POST['email']:'';
-$date_enregistrement=date("Y-m-d");
+$date_enregistrement=date("Y-m-d"); 
 
+$map_address = $adresse."".$code."".$ville;
+$address=str_replace (" ", "+", $map_address);
+$url = "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=".$address."&key=AIzaSyD_e4-Bl7aMEIRG-JCtow4gHaRosE9TTxY";
+$getData = file_get_contents($url);
+$decode = json_decode($getData,true);
+
+$gps = $decode['results'][0]['geometry']['location']['lat'] . "," . $decode['results'][0]['geometry']['location']['lng'];
 
     // Requete :  
   try{
     //préparation de la requete
-  $sql = 'INSERT INTO formulaire (nom,adresse,comp_adresse,ville,code_postal,gps,email,date_enregistrement) 
-          VALUES (:nom,:adresse,:comp_adresse,:ville,:code_postal,:gps,:email,:date_enregistrement)';
+  $sql = 'INSERT INTO formulaire (nom,adresse,comp_adresse,code_postal,ville,gps,email,date_enregistrement) 
+          VALUES (:nom,:adresse,:comp_adresse,:code_postal,:ville,:gps,:email,:date_enregistrement)';
   $params = array( "nom"=>$nom
                   ,"adresse"=>$adresse
                   ,"comp_adresse"=>$comp_adresse
-                  ,"ville"=>$ville
                   ,"code_postal"=>$code
+                  ,"ville"=>$ville
                   ,"gps"=>$gps
                   ,"email"=>$email
                   ,"date_enregistrement"=>$date_enregistrement
@@ -36,9 +42,6 @@ $date_enregistrement=date("Y-m-d");
     //execution de la requete 
   	$req = $bdd ->prepare($sql);
    	$req ->execute($params);
-
-      
-   
 
  }catch(Exception $e){
     echo "<br>-------------------<br> ERREUR ! <br>";
@@ -125,7 +128,7 @@ $date_enregistrement=date("Y-m-d");
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-wrap" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 20px;" valign="top">
                           <table width="100%" cellpadding="0" cellspacing="0" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Bonjour <strong style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">'.$nom.'</strong>.-
+                            Bonjour <strong style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">'.$nom.'</strong>.
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0; text-align: justify; text-justify: inter-word;"><td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">

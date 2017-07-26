@@ -5,9 +5,6 @@
 				<!-- Title -->
 				<div class="container-fluid" id="title">
 					<h1>Météo</h1>			
-				<?php include 'geoloc.php';?>
-
-
 				 </div>
 				<!-- Adresse -->
 				<div class="container-fluid" id="zipcode">
