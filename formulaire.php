@@ -1,8 +1,8 @@
 <?php
-
+error_reporting(E_ALL);
 try{
    $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-   $bdd = new PDO('mysql:host=localhost;dbname=apimecra_apim','apimecra_master','WebAgram28',
+   $bdd = new PDO('mysql:host=localhost;dbname=apimecra_apim;charset=utf8','apimecra_master','WebAgram28',
    $pdo_options);
   }catch(Exception $e){
     die('Erreur de connexion a la BDD: '.$e->getMessage());
@@ -137,12 +137,12 @@ $gps = $decode['results'][0]['geometry']['location']['lat'] . "," . $decode['res
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Nous vous informons que vous recevrez un mail en cas de pluie entre Mars et Novembre, et de gel de Décemebre à Février .
+                            Nous vous informons que vous recevrez un mail en cas de pluie entre Mars et Novembre, et de gel de Décembre à Février .
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Bonne journée à vous , merci.
+                            Bonne journée à vous, cordialement , merci. 
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
@@ -153,6 +153,11 @@ $gps = $decode['results'][0]['geometry']['location']['lat'] . "," . $decode['res
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                             Ps: Pensez à enregistrer notre adresse afin qu\'elle ne se retrouve pas dans les spams
+                          </td>
+                        </tr>
+                        <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                          <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                            Pour vous désincrire cliquer sur le lien <a href="desinscription.php" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #FF0000; text-decoration: underline; margin: 0;">Se désinscrire</a>
                           </td>
                         </tr>
                       </table>

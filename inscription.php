@@ -1,6 +1,4 @@
-<?php include_once("header.php"); ?>
-
-		
+<?php include_once("header.php"); ?>		
 	<body ng-app="myApp" >
 		<div ng-controller="myCtrl" class="container" id="main_container">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col_centered default_bg" id="background">
@@ -41,7 +39,6 @@
 									<!-- GPS-->
 										<input type="hidden" class="form-control" id="gps" name="gps" value="" >
 								</div>	
-
 			    				<div class="form-group">
 			    					<!-- Email-->
 			    					<label for="email_id" class="control-label">Email</label>
@@ -60,5 +57,4 @@
 				</div>	
 			</div>	
 		</div>		
-	</body>
-</html>	
+<?php include_once("footer.php"); ?>

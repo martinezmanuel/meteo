@@ -144,7 +144,7 @@ for ($i = 0; $i < count($list); $i++) {
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Bonne journée à vous , merci.
+                            Bonne journée à vous, cordialement , merci. 
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
@@ -279,7 +279,7 @@ for ($i = 0; $i < count($list); $i++) {
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Bonne journée à vous , merci.
+                            Bonne journée à vous, cordialement , merci.
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
