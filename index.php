@@ -10,7 +10,7 @@
 				<div class="container-fluid" id="zipcode">
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 col_centered">
 						<form class="form-inline">
-							<input ng-model="zipcode" ng-focus="popoverHelper.hidePopover()" placeholder="Entrer votre localité pour être plus precis prendre les coordonnées GPS" type="text" class="form-control" id="zipcode_input" >
+							<input ng-model="zipcode" ng-focus="popoverHelper.hidePopover()" placeholder="Entrer votre adresse complète avec votre code postal et votre ville" type="text" class="form-control" id="zipcode_input" >
 							<button ng-click="getWeather()" id="find_button">Trouver</button>
 						</form>
 					</div>

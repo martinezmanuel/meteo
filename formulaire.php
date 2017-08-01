@@ -53,7 +53,7 @@ $gps = $decode['results'][0]['geometry']['location']['lat'] . "," . $decode['res
       $headers .= 'Content-type: text/html; charset=UTF-8'."\r\n";
       $headers.= "Reply-to: \"Webmaster\" <webmaster@api-meteo.craym.eu>";
       $headers .= 'Inscription'."\r\n";
-      $destinataire = 'm.martinez@agram.fr,'.$email.''; // Adresse email du client et du Webmaster pour avoir une copie    
+      $destinataire = 'webmaster@api-meteo.craym.eu,'.$email.''; // Adresse email du client et du Webmaster pour avoir une copie    
       $sujet = 'Inscription'; // Titre de l'email
       $contenu = 
       '<!DOCTYPE html>
@@ -157,7 +157,7 @@ $gps = $decode['results'][0]['geometry']['location']['lat'] . "," . $decode['res
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Pour vous désincrire cliquer sur le lien <a href="desinscription.php" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #FF0000; text-decoration: underline; margin: 0;">Se désinscrire</a>
+                            Pour vous désincrire cliquer sur le lien <a href="http://api-meteo.craym.eu/desinscription.php" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #FF0000; text-decoration: underline; margin: 0;">Se désinscrire</a>
                           </td>
                         </tr>
                       </table>

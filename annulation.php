@@ -14,10 +14,11 @@ try{
      // Requete :  
   try{
     //préparation de la requete
-  $sql ='DELETE FROM formulaire WHERE nom ="$nom" and email="$email"';
+  $sql ='DELETE FROM formulaire WHERE email="'.$email.'"';
     //execution de la requete 
-  	$req = $bdd ->prepare($sql);
-   	$req ->execute();
+  $q = array('email' => $email);
+  $req = $bdd -> prepare($sql);
+  $req -> execute($q);
 
  }catch(Exception $e){
     echo "<br>-------------------<br> ERREUR ! <br>";
@@ -29,7 +30,7 @@ try{
   	$headers .= 'Content-type: text/html; charset=UTF-8'."\r\n";
   	$headers.= "Reply-to: \"Webmaster\" <webmaster@api-meteo.craym.eu>";
   	$headers .= 'Désinscription'."\r\n";
-    $destinataire = 'm.martinez@agram.fr,'.$email.''; // Adresse email du client et du Webmaster pour avoir une copie    
+    $destinataire = 'webmaster@api-meteo.craym.eu,'.$email.''; // Adresse email du client et du Webmaster pour avoir une copie    
     $sujet = 'Désincription'; // Titre de l'email
     $contenu = 
       '<!DOCTYPE html>

@@ -29,12 +29,13 @@ for ($i = 0; $i < count($list); $i++) {
     //Récupération de l'email du client pour l'envois éventuel
     $email = $list[$i]['email'];
     $nom = $list[$i]['nom'];
-   
 
-    //On regupere les données GPS pour les separer en deux pour pouvoir faire l'appel de l'API grace aux coordonnées GPS du client
+
+    //On recupere les données GPS pour les separer en deux pour pouvoir faire l'appel de l'API grace aux coordonnées GPS du client
     $returnValue = explode(',', $list[$i]['gps']);
     $lat=$returnValue['0'];
     $lon=$returnValue['1'];
+   
 
   //Si le nombre de jour entre la date d'inscription et la date du jour est supérieur à 3 on lance la recherche de pluie ou de gel suivant la saison 
    if ($nbrejour>=3){
@@ -44,17 +45,22 @@ for ($i = 0; $i < count($list); $i++) {
       //On extrait de l'API les données pour la pluie et le gel suivant la saison
       $temp=$decode['list']['3']['temp']['min'];
       $pluie=$decode['list']['3']['weather']['0']['id'];
+      if (isset($decode['list']['3']['rain']))  { 
+        $milimetre=$decode ['list']['3']['rain'];
+        $rain= "&nbsp;il y aura ".$milimetre."&nbsp;mm&nbsp;";
+       } 
+       else{}
       
       //Controle du mois en cour pour voir s'il est compris entre Mars et Novembre
         if($mois>=3 && $mois<12){ 
-
+      //Controle de la pluie par les ID de l'application
             if ($pluie == 300 || $pluie == 301 || $pluie == 302 || $pluie == 310 || $pluie == 311 || $pluie == 312 || $pluie == 313 || $pluie == 314 ||$pluie == 321 || $pluie == 500 ||$pluie == 501 || $pluie == 502 || $pluie == 503 || $pluie == 504 || $pluie == 511 || $pluie == 520 || $pluie == 521 || $pluie == 522 || $pluie == 531 )
             {
-               
+               // si pluie envois de mail
               $headers = "MIME-Version: 1.0"."\r\n";
               $headers .= "Content-type: text/html; charset=UTF-8"."\r\n";
               $headers .= 'Alerte Pluie'."\r\n";
-              $destinataire = $email; // Adresse email du client et du Webmaster pour avoir une copie    
+              $destinataire = 'webmaster@api-meteo.craym.eu,'.$email.''; // Adresse email du client et du Webmaster pour avoir une copie    
               $sujet = "Pluie"; // Titre de l'email
               $contenu = 
               
@@ -139,7 +145,7 @@ for ($i = 0; $i < count($list); $i++) {
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                            Nous vous informons qu\'il risque de pleuvoir dans 3 jours afin que vous preniez vos precautions .
+                            Nous vous informons qu\'il risque de pleuvoir dans 3 jours '.$rain.' afin que vous preniez vos precautions .
                           </td>
                         </tr>
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
@@ -150,6 +156,11 @@ for ($i = 0; $i < count($list); $i++) {
                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
                           <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                             L\'équipe Agram.
+                          </td>
+                        </tr>
+                         <tr style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;">
+                          <td class="content-block" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
+                            Pour vous désincrire cliquer sur le lien <a href="http://api-meteo.craym.eu/desinscription.php" style="font-family: Helvetica Neue,Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 12px; color: #FF0000; text-decoration: underline; margin: 0;">Se désinscrire</a>
                           </td>
                         </tr>
                       </table>
@@ -186,7 +197,7 @@ for ($i = 0; $i < count($list); $i++) {
         else{  
         //Si on est pas dans la période precedente on controle les gelées
           if ($temp<0){
-            
+            // Si gel envois de mail
           $headers = 'MIME-Version: 1.0'."\r\n";
           $headers .= 'Content-type: text/html; charset=UTF-8'."\r\n";
           $headers .= 'Gel'."\r\n";
